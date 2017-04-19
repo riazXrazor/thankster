@@ -1,7 +1,7 @@
 # thankster
 Laravel wrapper for thankster api integration.
 
-#Api Documentation
+# Api Documentation
 For documentation on the api please refer to http://www.thankster.com/api-documentation/ 
 
 ## Installation
