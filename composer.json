@@ -1,12 +1,22 @@
 {
-    "name": "Riazxrazor/thankster",
+    "name": "riazxrazor/thankster",
+    "type": "library",
+    "license": "GPL-3",
     "authors": [
         {
             "name": "Riaz Laskar",
-            "email": "riazcool77@gmail.com"
+            "email": "riazcool77@gmail.com",
+            "role": "Developer"
         }
     ],
     "require": {
-        "guzzlehttp/guzzle": "^6.2"
-    }
+        "php": "^5.3.3 || ^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Riazxrazor\\Thankster\\": "src"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
 }
