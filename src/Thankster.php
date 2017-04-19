@@ -103,17 +103,9 @@ class Thankster
      * Messages are stored separately for each recipient in a project. To change messages you must provide the recipient ID and the user ID.
      */
 
-    public function applyMessages(string $insideMessage1, string $insideMessage2 = '')
+    public function applyMessages($messageData)
     {
-        $postdata = [
-            'thanksterRecipientID' => $this->thanksterRecipientID,
-            'thanksterUserID' => $this->userId,
-            'inside1' => $insideMessage1,
-            'inside2' => $insideMessage2
-        ];
-
-
-        $this->apiCall('POST','api_projects/applyMessages',$postdata);
+        $this->apiCall('POST','api_projects/applyMessages',$messageData);
         return $this;
     }
 
@@ -123,15 +115,15 @@ class Thankster
      * This is an advanced optional call, if this call is not used the project will be created with a generic name like "Project 1".
      */
 
-    public function renameProject(string $newProjectName)
+    public function renameProject($data)
     {
-        $postdata = [
-            'thanksterProjectID' => $this->thanksterProjectID,
-            'thanksterUserID' => $this->userId,
-            'thanksterProjectName' => $newProjectName
-        ];
+//        $postdata = [
+//            'thanksterProjectID' => $this->thanksterProjectID,
+//            'thanksterUserID' => $this->userId,
+//            'thanksterProjectName' => $newProjectName
+//        ];
 
-        $this->apiCall('POST','api_projects/renameProject',$postdata);
+        $this->apiCall('POST','api_projects/renameProject',$data);
         return $this;
     }
 
@@ -141,15 +133,15 @@ class Thankster
      * This is an optional call, if this call is not used the project will be created with the default of our system or the one selected for your template (if you have one).
      * @param $thanksterCardID
      */
-    public function selectCard(int $thanksterCardID)
+    public function selectCard($data)
     {
-        $postdata = [
-            'thanksterProjectID' => $this->thanksterProjectID,
-            'thanksterUserID' => $this->userId,
-            'thanksterCardID' => $thanksterCardID
-        ];
+//        $postdata = [
+//            'thanksterProjectID' => $this->thanksterProjectID,
+//            'thanksterUserID' => $this->userId,
+//            'thanksterCardID' => $thanksterCardID
+//        ];
 
-        $this->apiCall('POST','api_projects/selectCard',$postdata);
+        $this->apiCall('POST','api_projects/selectCard',$data);
         return $this;
     }
 
@@ -159,15 +151,15 @@ class Thankster
      * @param $thanksterFontID
      */
 
-    public function selectFont(int $thanksterFontID)
+    public function selectFont($data)
     {
-        $postdata = [
-            'thanksterRecipientID' => $this->thanksterRecipientID,
-            'thanksterUserID' => $this->userId,
-            'thanksterFontID' => $thanksterFontID
-        ];
+//        $postdata = [
+//            'thanksterRecipientID' => $this->thanksterRecipientID,
+//            'thanksterUserID' => $this->userId,
+//            'thanksterFontID' => $thanksterFontID
+//        ];
 
-        $this->apiCall('POST','api_projects/selectFont',$postdata);
+        $this->apiCall('POST','api_projects/selectFont',$data);
         return $this;
     }
 
@@ -177,15 +169,15 @@ class Thankster
      * @param $thanksterFontSize
      */
 
-    public function selectFontSize(float $thanksterFontSize)
+    public function selectFontSize($data)
     {
-        $postdata = [
-            'thanksterRecipientID' => $this->thanksterRecipientID,
-            'thanksterUserID' => $this->userId,
-            'thanksterFontSize' => $thanksterFontSize
-        ];
+//        $postdata = [
+//            'thanksterRecipientID' => $this->thanksterRecipientID,
+//            'thanksterUserID' => $this->userId,
+//            'thanksterFontSize' => $thanksterFontSize
+//        ];
 
-        $this->apiCall('POST','api_projects/selectFontSize',$postdata);
+        $this->apiCall('POST','api_projects/selectFontSize',$data);
         return $this;
     }
 
@@ -194,15 +186,15 @@ class Thankster
      *
      * This is an optional call, if this call is not used the recipients will be created with the default line angle selected for your template.
      */
-    public function selectLineAngle(float $thanksterLineAngle)
+    public function selectLineAngle($data)
     {
-        $postdata = [
-            'thanksterRecipientID' => $this->thanksterRecipientID,
-            'thanksterUserID' => $this->userId,
-            'thanksterLineAngle' => $thanksterLineAngle,
-        ];
+//        $postdata = [
+//            'thanksterRecipientID' => $this->thanksterRecipientID,
+//            'thanksterUserID' => $this->userId,
+//            'thanksterLineAngle' => $thanksterLineAngle,
+//        ];
 
-        $this->apiCall('POST','api_projects/selectLineAngle',$postdata);
+        $this->apiCall('POST','api_projects/selectLineAngle',$data);
         return $this;
     }
 
@@ -212,15 +204,15 @@ class Thankster
      * @param $thanksterFontColor
      */
 
-    public function selectFontColor(string $thanksterFontColor)
+    public function selectFontColor($data)
     {
-        $postdata = [
-            'thanksterRecipientID' => $this->thanksterRecipientID,
-            'thanksterUserID' => $this->userId,
-            'thanksterFontColor' => $thanksterFontColor
-        ];
+//        $postdata = [
+//            'thanksterRecipientID' => $this->thanksterRecipientID,
+//            'thanksterUserID' => $this->userId,
+//            'thanksterFontColor' => $thanksterFontColor
+//        ];
 
-        $this->apiCall('POST','api_projects/selectFontColor',$postdata);
+        $this->apiCall('POST','api_projects/selectFontColor',$data);
         return $this;
     }
 
@@ -230,23 +222,18 @@ class Thankster
      * When this URL is used in an iframe, a preview of the user's card is returned. This may be useful for display in a user's dashboard, during their checkout on your site, etc.
      */
 
-    public function renderProjectPreview()
+    public function renderProjectPreview($thanksterProjectID)
     {
-        echo 'http://www.thankster.com/api/v1/api_projects/renderProjectPreview?api_key=d95e69f7c9f13f61ed01b4c312e38cdc&thanksterProjectID=1420901943';
+        return file_get_contents('http://www.thankster.com/api/v1/api_projects/renderProjectPreview?api_key='.$this->API_KEY.'&thanksterProjectID='.$thanksterProjectID);
     }
 
     /**
      * Once a project is complete and you are ready to order it, this call will place the order in Thankster's systems and return an Order ID back for your records.
      * This Order ID must be used in the setPartnerOrderID before calling the approveForPrinting method.
      */
-    public function orderProject()
+    public function orderProject($orderData)
     {
-        $postdata = [
-            'thanksterProjectID' => $this->thanksterProjectID,
-            'thanksterUserID' => $this->userId,
-        ];
-
-        $this->apiCall('POST','api_projects/orderProject',$postdata);
+        $this->apiCall('POST','api_projects/orderProject',$orderData);
         return $this;
     }
 
@@ -256,14 +243,9 @@ class Thankster
      * This call MUST be placed before the approveForPrinting call can be made.
      */
 
-    public function setPartnerOrderID(int $orderID)
+    public function setPartnerOrderID($orderData)
     {
-        $postdata = [
-            'thanksterOrderID' => $this->thanksterOrderID,
-            'orderID' => $orderID,
-        ];
-
-        $this->apiCall('POST','api_projects/setPartnerOrderID',$postdata);
+        $this->apiCall('POST','api_projects/setPartnerOrderID',$orderData);
         return $this;
     }
 
@@ -271,14 +253,9 @@ class Thankster
      * Used to notify Thankster that an order may be printed and mailed.
      */
 
-    public function approveForPrinting(int $orderID)
+    public function approveForPrinting($orderData)
     {
-        $postdata = [
-            'thanksterOrderID' => $this->thanksterOrderID,
-            'orderID' => $orderID,
-        ];
-
-        $this->apiCall('POST','api_projects/approveForPrinting',$postdata);
+        $this->apiCall('POST','api_projects/approveForPrinting',$orderData);
         return $this;
     }
 
@@ -289,15 +266,15 @@ class Thankster
      *
      * Each time this call is executed, the entries will be added to the user's addressbook. Sending the same entries again will result in duplicates in the user's addressbook.
      */
-    public function importAddressbook(string $userEmail,array $entries)
+    public function importAddressbook($addressdata)
     {
-        $postdata = [
-            'userEmail' => $userEmail,
-            'entries' => $entries,
-            'thanksterOrderID' => $this->thanksterOrderID,
-        ];
+//        [
+//            'userEmail' => $userEmail,
+//            'entries' => $entries,
+//            'thanksterOrderID' => $this->thanksterOrderID,
+//        ];
 
-        $this->apiCall('POST','api_projects/importAddressbook',json_encode($postdata));
+        $this->apiCall('POST','api_projects/importAddressbook',json_encode($addressdata));
         return $this;
     }
 
