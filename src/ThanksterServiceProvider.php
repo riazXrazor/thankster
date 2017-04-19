@@ -13,7 +13,7 @@ class ThanksterServiceProvider extends ServiceProvider
         $dist = __DIR__.'/../config/thankster.php';
         $this->publishes([
             $dist => config_path('thankster.php'),
-        ]);
+        ],'config');
 
         $this->mergeConfigFrom($dist, 'thankster');
     }
