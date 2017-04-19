@@ -1,0 +1,12 @@
+{
+    "name": "Riazxrazor/thankster",
+    "authors": [
+        {
+            "name": "Riaz Laskar",
+            "email": "riazcool77@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.2"
+    }
+}
