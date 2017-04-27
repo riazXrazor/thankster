@@ -60,7 +60,7 @@ class Thankster
     public function findOrCreateUserByEmail($userData)
     {
 
-        $this->apiCall('POST','api_projects/findOrCreateUserByEmail',$userData);
+        $this->apiCall('POST','api_users/findOrCreateUserByEmail',$userData);
 
         // Check if it is a valid response from thankster
         if ($this->responseData->status == 200) {
@@ -274,7 +274,7 @@ class Thankster
 //            'thanksterOrderID' => $this->thanksterOrderID,
 //        ];
 
-        $this->apiCall('POST','api_projects/importAddressbook',json_encode($addressdata));
+        $this->apiCall('POST','api_users/importAddressbook',json_encode($addressdata));
         return $this;
     }
 
